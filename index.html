@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goldy 🐾 The Funny Digital Pet Portfolio</title>
+  <meta name="description" content="Meet Goldy, the Golden Retriever! Professional Good Boy, Part-Time Trouble Maker. Explore his official pet portfolio.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
+  
+  <!-- Google Fonts: Fredoka (Playful/Cartoon) & Nunito (Clean/Readable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- Sound Toggle Button & Treat Counter Floating Bar -->
+  <div class="floating-controls">
+    <button id="soundToggle" class="control-btn" title="Toggle Sound Effects" aria-label="Toggle Sound Effects">
+      <span class="icon" id="soundIcon">🔊</span>
+      <span class="label">Sound FX</span>
+    </button>
+    <button id="quickTreatBtn" class="control-btn treat-btn" title="Toss Goldy a quick treat!" aria-label="Toss Goldy a quick treat">
+      <span class="icon">🍖</span>
+      <span class="label">Treats: <strong id="globalTreatCount">0</strong></span>
+    </button>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="brand-paw">🐾</span>
+        <span class="brand-name">GOLDY<span class="brand-dot">.</span>DOG</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#who-am-i">Who I Am</a></li>
+          <li><a href="#my-home">My Crib</a></li>
+          <li><a href="#loves">Treats & Love</a></li>
+          <li><a href="#personal-space">Boundaries ⚠️</a></li>
+          <li><a href="#lost-section">Lost Doggo?</a></li>
+          <li><a href="#tv-screens">TV Wall</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 2. HERO SECTION — Meet Goldy                             -->
+  <!-- ========================================================= -->
+  <section id="hero" class="hero-section">
+    <!-- Decorative Floating Doodles -->
+    <div class="hero-doodles" aria-hidden="true">
+      <span class="doodle doodle-heart doodle-1">💖</span>
+      <span class="doodle doodle-paw doodle-2">🐾</span>
+      <span class="doodle doodle-star doodle-3">⭐</span>
+      <span class="doodle doodle-bone doodle-4">🦴</span>
+      <span class="doodle doodle-sparkle doodle-5">✨</span>
+      <span class="doodle doodle-heart doodle-6">💕</span>
+      <span class="doodle doodle-paw doodle-7">🐾</span>
+    </div>
+
+    <div class="container hero-content">
+      <!-- Left Column: Sequential Animated Text -->
+      <div class="hero-left">
+        <div class="hero-greeting-box">
+          <span class="hero-intro-text" id="heroIntroText">Hi, I'm</span>
+        </div>
+        <h1 class="hero-dog-name" id="heroDogName">GOLDY</h1>
+        <p class="hero-caption" id="heroCaption">
+          Professional Good Boy. Part-Time Trouble Maker.
+        </p>
+
+        <div class="hero-actions" id="heroActions">
+          <a href="#who-am-i" class="btn btn-primary">
+            <span>Meet Me</span>
+            <span class="btn-icon">👇</span>
+          </a>
+          <button id="heroBarkBtn" class="btn btn-secondary">
+            <span>Pet Goldy</span>
+            <span class="btn-icon">🐶</span>
+          </button>
+        </div>
+
+        <div class="hero-stats-pills">
+          <span class="pill"><span class="pill-dot"></span> 100% Fluffy</span>
+          <span class="pill"><span class="pill-dot"></span> Certified Foodie</span>
+          <span class="pill"><span class="pill-dot"></span> Squirrel Chaser</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Goldy with Sunglasses (Heartbeat Animation) -->
+      <div class="hero-right">
+        <div class="hero-portrait-stage" id="heroPortraitStage">
+          <!-- Cartoon backdrop halo -->
+          <div class="cartoon-halo"></div>
+
+          <!-- Goldy's Portrait wearing black sunglasses -->
+          <div class="hero-image-wrapper" id="heroImageWrapper">
+            <img 
+              src="assets/goldy-cool.png" 
+              alt="Goldy the Golden Retriever wearing cool black sunglasses with a big happy smile" 
+              class="hero-dog-image heartbeat-anim"
+              id="heroDogImg"
+              loading="eager"
+            >
+          </div>
+
+          <!-- Speech bubble on hover/tap -->
+          <div class="comic-bubble hero-bubble" id="heroSpeechBubble">
+            <span>Too cool for obedience school! 😎🐾</span>
+          </div>
+
+          <!-- Small cartoon floaters anchored around portrait -->
+          <div class="portrait-decorations" aria-hidden="true">
+            <span class="decor decor-star decor-top-left">✨</span>
+            <span class="decor decor-heart decor-top-right">💖</span>
+            <span class="decor decor-paw decor-bottom-left">🐾</span>
+            <span class="decor decor-bone decor-bottom-right">🦴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Down Hint -->
+    <a href="#who-am-i" class="scroll-down-hint" aria-label="Scroll down to Who I Am">
+      <span class="mouse-icon">
+        <span class="mouse-wheel">🐾</span>
+      </span>
+      <span class="scroll-text">Sniff Downwards</span>
+    </a>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 3. SECTION — Who I Am                                     -->
+  <!-- ========================================================= -->
+  <section id="who-am-i" class="section who-section reveal-on-scroll">
+    <div class="container">
+      <div class="section-badge">
+        <span class="badge-icon">🐶</span>
+        <span>THE DOG BEHIND THE SUNGLASSES</span>
+      </div>
+
+      <h2 class="section-title">Who Am I?</h2>
+      <div class="title-underline"></div>
+
+      <!-- Funny Goldy Voice Introduction Card -->
+      <div class="intro-quote-card">
+        <div class="quote-mark left">“</div>
+        <p class="quote-text">
+          Hi, hooman! I'm <strong>Goldy</strong>. I'm cute, fluffy, occasionally naughty, 
+          and absolutely convinced that everything you eat belongs to me.
+        </p>
+        <div class="quote-mark right">”</div>
+        <div class="quote-author-tag">
+          <span class="tag-paw">🐾</span>
+          <span>Verified Statement from Goldy's Belly</span>
+        </div>
+      </div>
+
+      <!-- 4 Playful Personality Tags -->
+      <div class="personality-grid">
+        <!-- Tag 1: Professional Napper -->
+        <div class="personality-card" data-card="napper">
+          <div class="card-icon-bubble">
+            <span class="card-emoji">💤</span>
+          </div>
+          <h3 class="card-title">Professional Napper</h3>
+          <p class="card-desc">
+            Can sleep 16 hours a day anywhere: couch, rug, kitchen floor, or directly in front of the refrigerator door you need to open.
+          </p>
+          <div class="card-stat">
+            <div class="stat-label">Daily Snooze Efficiency</div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 98%;"></div>
+            </div>
+            <span class="stat-value">98% Master Level</span>
+          </div>
+        </div>
+
+        <!-- Tag 2: Expert Treat Hunter -->
+        <div class="personality-card" data-card="hunter">
+          <div class="card-icon-bubble">
+            <span class="card-emoji">🍖</span>
+          </div>
+          <h3 class="card-title">Expert Treat Hunter</h3>
+          <p class="card-desc">
+            Possesses military-grade radar. I can detect a cheese drawer opening from 3 rooms away, even while sound asleep under a blanket.
+          </p>
+          <div class="card-stat">
+            <div class="stat-label">Snack Detection Range</div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 100%;"></div>
+            </div>
+            <span class="stat-value">300 Meters / 100%</span>
+          </div>
+        </div>
+
+        <!-- Tag 3: Full-Time Hooman Supervisor -->
+        <div class="personality-card" data-card="supervisor">
+          <div class="card-icon-bubble">
+            <span class="card-emoji">👁️</span>
+          </div>
+          <h3 class="card-title">Full-Time Hooman Supervisor</h3>
+          <p class="card-desc">
+            I escort you to the bathroom, inspect your grocery bags, and supervise your Zoom calls to ensure standard tail-wagging safety.
+          </p>
+          <div class="card-stat">
+            <div class="stat-label">Bathroom Protection Duty</div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 100%;"></div>
+            </div>
+            <span class="stat-value">Never Miss A Shift</span>
+          </div>
+        </div>
+
+        <!-- Tag 4: Part-Time Shoe Inspector -->
+        <div class="personality-card" data-card="inspector">
+          <div class="card-icon-bubble">
+            <span class="card-emoji">👟</span>
+          </div>
+          <h3 class="card-title">Part-Time Shoe Inspector</h3>
+          <p class="card-desc">
+            I don't chew your left sneaker—I merely relocate it under the bed to negotiate for evening biscuits. It's called diplomacy.
+          </p>
+          <div class="card-stat">
+            <div class="stat-label">Sneaker Relocation Skill</div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 95%;"></div>
+            </div>
+            <span class="stat-value">Sneaky 95%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun Fact Mini Strip -->
+      <div class="who-fun-facts">
+        <div class="fact-item">
+          <span class="fact-icon">🎾</span>
+          <span class="fact-text"><strong>Favorite Toy:</strong> Tennis Ball #47 (The squeaky one)</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🚿</span>
+          <span class="fact-text"><strong>Arch Nemesis:</strong> The Evil Bath Tub & The Vacuum Monster</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🚗</span>
+          <span class="fact-text"><strong>Dream Job:</strong> Head of Car Window Breeze Department</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. SECTION — My Home                                      -->
+  <!-- ========================================================= -->
+  <section id="my-home" class="section home-section reveal-on-scroll">
+    <div class="container">
+      <div class="section-badge">
+        <span class="badge-icon">🏡</span>
+        <span>WELCOME TO MY PALACE</span>
+      </div>
+
+      <h2 class="section-title">Where Do I Live?</h2>
+      <div class="title-underline"></div>
+
+      <!-- Balanced Duo Stage: House on one side, Goldy on the other -->
+      <div class="home-duo-stage">
+        <!-- Side 1: Cartoon House as an independent cartoon element -->
+        <div class="home-house-card">
+          <div class="house-card-backdrop">
+            <!-- Animated Clouds -->
+            <div class="sky-cloud cloud-1">☁️</div>
+            <div class="sky-cloud cloud-2">☁️</div>
+
+            <!-- Cartoon SVG House -->
+            <svg class="svg-cartoon-house" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+              <!-- Chimney Smoke -->
+              <path class="smoke-puff smoke-1" d="M120 40 Q 130 30, 125 20 Q 115 10, 130 5" fill="none" stroke="#A8E6CF" stroke-width="4" stroke-linecap="round"/>
+              <path class="smoke-puff smoke-2" d="M125 35 Q 135 25, 128 15" fill="none" stroke="#A8E6CF" stroke-width="3" stroke-linecap="round"/>
+
+              <!-- Chimney -->
+              <rect x="105" y="45" width="30" height="55" rx="5" fill="#FF8A80" stroke="#0F1D38" stroke-width="4"/>
+              <rect x="100" y="40" width="40" height="12" rx="4" fill="#FF5252" stroke="#0F1D38" stroke-width="4"/>
+
+              <!-- Main House Wall -->
+              <rect x="70" y="120" width="260" height="170" rx="18" fill="#FFF9E6" stroke="#0F1D38" stroke-width="5"/>
+
+              <!-- Pastel Green Accents / Baseboard -->
+              <rect x="68" y="275" width="264" height="18" rx="8" fill="#A8E6CF" stroke="#0F1D38" stroke-width="4"/>
+
+              <!-- Roof Triangle -->
+              <polygon points="200,30 50,135 350,135" fill="#78D5A3" stroke="#0F1D38" stroke-width="5" stroke-linejoin="round"/>
+              <!-- Roof Ridge Tiles Detail -->
+              <line x1="80" y1="115" x2="195" y2="42" stroke="#57C286" stroke-width="4" stroke-linecap="round"/>
+              <line x1="120" y1="125" x2="200" y2="60" stroke="#57C286" stroke-width="4" stroke-linecap="round"/>
+              <line x1="320" y1="115" x2="205" y2="42" stroke="#57C286" stroke-width="4" stroke-linecap="round"/>
+
+              <!-- Attic Bone Plaque -->
+              <ellipse cx="200" cy="90" rx="28" ry="18" fill="#FFFFFF" stroke="#0F1D38" stroke-width="3"/>
+              <!-- Bone icon in plaque -->
+              <circle cx="188" cy="87" r="4.5" fill="#FFD166"/>
+              <circle cx="188" cy="94" r="4.5" fill="#FFD166"/>
+              <circle cx="212" cy="87" r="4.5" fill="#FFD166"/>
+              <circle cx="212" cy="94" r="4.5" fill="#FFD166"/>
+              <rect x="187" y="88.5" width="26" height="5" rx="2" fill="#FFD166"/>
+
+              <!-- Front Door (Dog Arch Door) -->
+              <path d="M160 275 V 190 Q 200 160, 240 190 V 275 Z" fill="#FFE082" stroke="#0F1D38" stroke-width="4"/>
+              <!-- Door flap curtain -->
+              <path d="M175 275 V 205 Q 200 180, 225 205 V 275" fill="#FFD54F" stroke="#0F1D38" stroke-width="3" stroke-dasharray="4 4"/>
+              <!-- Paw print above door -->
+              <circle cx="200" cy="180" r="5" fill="#0F1D38"/>
+              <circle cx="193" cy="170" r="3" fill="#0F1D38"/>
+              <circle cx="200" cy="166" r="3" fill="#0F1D38"/>
+              <circle cx="207" cy="170" r="3" fill="#0F1D38"/>
+
+              <!-- Left Window with Cute Shutters -->
+              <rect x="90" y="160" width="48" height="55" rx="10" fill="#E1F5FE" stroke="#0F1D38" stroke-width="4"/>
+              <line x1="114" y1="160" x2="114" y2="215" stroke="#0F1D38" stroke-width="3"/>
+              <line x1="90" y1="187" x2="138" y2="187" stroke="#0F1D38" stroke-width="3"/>
+              <!-- Window Sill -->
+              <rect x="85" y="215" width="58" height="8" rx="4" fill="#FFD166" stroke="#0F1D38" stroke-width="3"/>
+
+              <!-- Right Window with Heart Shutter -->
+              <rect x="262" y="160" width="48" height="55" rx="10" fill="#E1F5FE" stroke="#0F1D38" stroke-width="4"/>
+              <line x1="286" y1="160" x2="286" y2="215" stroke="#0F1D38" stroke-width="3"/>
+              <line x1="262" y1="187" x2="310" y2="187" stroke="#0F1D38" stroke-width="3"/>
+              <rect x="257" y="215" width="58" height="8" rx="4" fill="#FFD166" stroke="#0F1D38" stroke-width="3"/>
+
+              <!-- Welcome Mat: "WIPE PAWS" -->
+              <ellipse cx="200" cy="285" rx="45" ry="12" fill="#FFB74D" stroke="#0F1D38" stroke-width="3"/>
+              <text x="200" y="288" text-anchor="middle" font-family="'Fredoka', sans-serif" font-size="8" font-weight="700" fill="#0F1D38">WIPE PAWS</text>
+
+              <!-- Mailbox with bone flag -->
+              <rect x="25" y="220" width="10" height="70" fill="#8D6E63" stroke="#0F1D38" stroke-width="3"/>
+              <path d="M15 220 H 45 Q 50 200, 30 195 H 15 Z" fill="#78D5A3" stroke="#0F1D38" stroke-width="3"/>
+              <rect x="28" y="200" width="12" height="6" rx="2" fill="#FF5252"/>
+              <!-- Little Bone poking out of mailbox -->
+              <text x="18" y="210" font-size="12">🦴</text>
+            </svg>
+          </div>
+          <div class="house-caption-badge">
+            <span>🏡 The Barkingham Villa Exterior</span>
+          </div>
+        </div>
+
+        <!-- Side 2: Goldy sitting proudly with ample spacing -->
+        <div class="home-dog-card">
+          <div class="home-dog-wrapper">
+            <img 
+              src="assets/goldy-joyful.png" 
+              alt="Goldy sitting proudly beside his cartoon home" 
+              class="home-goldy-img"
+              loading="lazy"
+            >
+            <!-- Speech bubble next to Goldy -->
+            <div class="comic-bubble home-bubble">
+              <span>Welcome! Please take off your shoes...</span>
+            </div>
+          </div>
+          <div class="dog-caption-badge">
+            <span>🐾 Master of the House</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playful Address Card -->
+      <div class="home-info-wrap">
+          <div class="address-card">
+            <div class="address-card-header">
+              <span class="card-chip">🐕 OFFICIAL CANINE RESIDENCE DEED</span>
+              <span class="card-stamp">VIP PET APPROVED</span>
+            </div>
+
+            <div class="address-details">
+              <div class="address-field">
+                <span class="field-label">ESTATE NAME:</span>
+                <span class="field-value highlight">The Barkingham Villa 👑</span>
+              </div>
+
+              <div class="address-field">
+                <span class="field-label">STREET ADDRESS:</span>
+                <span class="field-value">123 Golden Paw Lane, Suite Snuggle</span>
+              </div>
+
+              <div class="address-field">
+                <span class="field-label">NEIGHBOURHOOD:</span>
+                <span class="field-value">Tennis Ball Valley, Barkshire</span>
+              </div>
+
+              <div class="address-field">
+                <span class="field-label">COUNTRY:</span>
+                <span class="field-value">The United Kingdom of Good Boys 🐾</span>
+              </div>
+            </div>
+
+            <!-- Mandatory exact prompt caption -->
+            <div class="home-caption-box">
+              <span class="quote-paw">🐾</span>
+              <p class="home-golden-rule">
+                "My house, my rules. My humans just pay the bills."
+              </p>
+            </div>
+
+            <!-- Cute Amenities List -->
+            <div class="home-amenities">
+              <div class="amenity-item">
+                <span class="amenity-icon">🛋️</span>
+                <span>The Big Couch (Reserved for Goldy)</span>
+              </div>
+              <div class="amenity-item">
+                <span class="amenity-icon">🍗</span>
+                <span>Fridge Surveillance Station 24/7</span>
+              </div>
+              <div class="amenity-item">
+                <span class="amenity-icon">🌳</span>
+                <span>Yard Squirrel Obstacle Course</span>
+              </div>
+              <div class="amenity-item">
+                <span class="amenity-icon">🛏️</span>
+                <span>Humans' Bed (60% Occupied by Dog)</span>
+              </div>
+            </div>
+
+            <!-- Interactive Doorbell Action -->
+            <div class="address-card-footer">
+              <button id="doorbellBtn" class="btn btn-outline doorbell-btn">
+                <span class="btn-icon">🔔</span>
+                <span>Ring Goldy's Doorbell!</span>
+              </button>
+              <span id="doorbellFeedback" class="doorbell-feedback" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ========================================================= -->
+  <!-- 5. SECTION — What I Love the Most                         -->
+  <!-- ========================================================= -->
+  <section id="loves" class="section loves-section reveal-on-scroll">
+    <!-- Clipped decorative animation layer for giant falling bones -->
+    <div id="boneRainContainer" class="bone-rain-layer" aria-hidden="true"></div>
+
+    <!-- Huge Decorative Cartoon Bone Illustration in Background -->
+    <div class="huge-background-bone" aria-hidden="true">
+      <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#A8E6CF" opacity="0.22">
+          <!-- Left Knobs -->
+          <circle cx="150" cy="110" r="70"/>
+          <circle cx="150" cy="240" r="70"/>
+          <!-- Right Knobs -->
+          <circle cx="650" cy="110" r="70"/>
+          <circle cx="650" cy="240" r="70"/>
+          <!-- Shaft -->
+          <rect x="150" y="130" width="500" height="90" rx="35"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="section-badge">
+        <span class="badge-icon">🦴</span>
+        <span>THE IMPORTANT STUFF IN LIFE</span>
+      </div>
+
+      <h2 class="section-title">What I Love the Most!</h2>
+      <div class="title-underline"></div>
+      
+      <p class="section-subtitle">
+        Scientifically calibrated Golden Retriever happiness factors. Caution: high drool likelihood ahead!
+      </p>
+
+      <!-- Centerpiece: Video of Goldy looking left and right (TV design removed) -->
+      <div class="love-center-stage">
+        <div class="love-video-card">
+          <div class="love-video-wrapper">
+            <video 
+              id="leftRightVideo" 
+              class="center-dog-video" 
+              autoplay 
+              loop 
+              muted 
+              playsinline
+              preload="auto"
+            >
+              <source src="assets/leftandright.mp4" type="video/mp4">
+              <!-- Fallback: Goldy Joyful Image -->
+              <img src="assets/goldy-joyful.png" alt="Goldy looking around attentively">
+            </video>
+            <!-- Sound toggle button -->
+            <button id="videoSoundBtn" class="video-sound-toggle-btn" title="Unmute Video" aria-label="Toggle sound">
+              <span>🔇</span>
+            </button>
+          </div>
+          <div class="love-video-caption">
+            <span class="caption-paw">🐾</span>
+            <span>Scanning left... scanning right... searching for treats!</span>
+            <span class="caption-paw">🐾</span>
+          </div>
+        </div>
+
+        <!-- Giant Bone Rain Shower Trigger Button -->
+        <div class="bone-rain-controls">
+          <button id="toggleBoneShowerBtn" class="btn btn-primary shower-btn">
+            <span class="btn-icon">🦴</span>
+            <span>Make It Rain Giant Bones!</span>
+            <span class="btn-sparkle">✨</span>
+          </button>
+          <span class="shower-hint">Tap to trigger a storm of oversized cartoon bones!</span>
+        </div>
+      </div>
+
+      <!-- Funny Captions Specified in Prompt -->
+      <div class="quotes-trio-grid">
+        <!-- Caption 1 -->
+        <div class="love-caption-card card-yellow">
+          <div class="caption-icon-head">
+            <span class="emoji-circle">🍗</span>
+            <span class="sparkle-tag">Truth #1</span>
+          </div>
+          <h3 class="caption-title">"Treats? I heard treats!"</h3>
+          <p class="caption-desc">
+            Even when my eyes are closed and I appear to be dreaming of squirrels, my ears are tuned to the precise frequency of a treat cupboard opening.
+          </p>
+          <div class="caption-footer">
+            <span class="sound-wave">🔊 120dB Canine Radar</span>
+          </div>
+        </div>
+
+        <!-- Caption 2 -->
+        <div class="love-caption-card card-green">
+          <div class="caption-icon-head">
+            <span class="emoji-circle">❤️</span>
+            <span class="sparkle-tag">Truth #2</span>
+          </div>
+          <h3 class="caption-title">"Chicken is my love language."</h3>
+          <p class="caption-desc">
+            Flowers are cute, belly rubs are great, but a warm bite of rotisserie chicken is the true poetry of the soul. No spices, just juicy delight.
+          </p>
+          <div class="caption-footer">
+            <span class="sound-wave">🍗 Pure Happiness</span>
+          </div>
+        </div>
+
+        <!-- Caption 3 -->
+        <div class="love-caption-card card-blue">
+          <div class="caption-icon-head">
+            <span class="emoji-circle">👂</span>
+            <span class="sparkle-tag">Truth #3</span>
+          </div>
+          <h3 class="caption-title">"I can hear a snack wrapper from three rooms away."</h3>
+          <p class="caption-desc">
+            You tried to open that chip bag silently behind a pillow. I respect your effort, hooman, but I am already standing behind you staring into your soul.
+          </p>
+          <div class="caption-footer">
+            <span class="sound-wave">🐾 Instant Teleportation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 6. SECTION — My Personal Space                            -->
+  <!-- ========================================================= -->
+  <section id="personal-space" class="section boundaries-section reveal-on-scroll">
+    <div class="container">
+      <!-- Comic Caution Ribbon Strip -->
+      <div class="caution-tape-banner" aria-hidden="true">
+        <span class="tape-text">⚠️ RESTRICTED AIRSPACE • SNOOT SENSITIVE • DENTAL INSPECTION DENIED ⚠️</span>
+      </div>
+
+      <div class="boundaries-content-wrap">
+        <!-- Grumpy Goldy Image with Comic Border -->
+        <div class="grumpy-stage">
+          <div class="grumpy-frame">
+            <div class="grumpy-danger-badge">
+              <span class="badge-flash">⚡</span>
+              <span>DEFCON GRUMPY</span>
+            </div>
+
+            <!-- Grumpy Goldy Portrait -->
+            <img 
+              src="assets/goldy-grumpy.png" 
+              alt="Grumpy Goldy showing funny teeth with an intense cartoon comic expression" 
+              class="grumpy-dog-img"
+              id="grumpyDogImg"
+              loading="lazy"
+            >
+
+            <!-- Comic Grrr Steam Cloud -->
+            <div class="comic-steam-puff" aria-hidden="true">
+              <span class="grrr-text">GRRR! 🗯️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text & Comic Warnings -->
+        <div class="boundaries-text-wrap">
+          <div class="comic-warning-header">
+            <span class="warning-sign-icon">🛑</span>
+            <span class="warning-tag">CANINE BOUNDARY NOTICE #001</span>
+          </div>
+
+          <!-- Prompt exact required caption -->
+          <h2 class="boundary-main-title">
+            DO NOT TOUCH MY MOUTH!
+          </h2>
+
+          <!-- Prompt exact required subtext -->
+          <p class="boundary-subtext">
+            "I'm adorable, but I have boundaries. Please respect my personal space."
+          </p>
+
+          <div class="boundary-rules-box">
+            <h4 class="rules-heading">
+              <span>📋 Official Goldy Touching Protocol:</span>
+            </h4>
+            <ul class="rules-list">
+              <li class="rule-item allowed">
+                <span class="rule-icon">✅</span>
+                <div>
+                  <strong>Belly Rubs:</strong> 100% Encouraged. Belly exposure indicates immediate compliance requested.
+                </div>
+              </li>
+              <li class="rule-item allowed">
+                <span class="rule-icon">✅</span>
+                <div>
+                  <strong>Behind the Ears:</strong> High satisfaction rating. May result in involuntary rhythmic leg kicking.
+                </div>
+              </li>
+              <li class="rule-item prohibited">
+                <span class="rule-icon">🚫</span>
+                <div>
+                  <strong>Touching The Mouth / Teeth Checking:</strong> Absolutely NOT! That is where my snacks go, not your fingers!
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Interactive Boop Snoot Button with Humorous Repercussion -->
+          <div class="boundaries-interactive">
+            <button id="boopSnootBtn" class="btn btn-warning boop-btn">
+              <span class="btn-icon">👆</span>
+              <span>Test Snoot Boop (At Your Own Risk!)</span>
+            </button>
+            <div id="boopWarningMsg" class="boop-warning-msg" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 7. SECTION — Lost or Looking for Help?                    -->
+  <!-- ========================================================= -->
+  <section id="lost-section" class="section lost-section reveal-on-scroll">
+    <div class="container">
+      <div class="lost-card-wrapper">
+        <div class="lost-badge">
+          <span class="lost-icon">🆘</span>
+          <span>GOLDEN RETRIEVER SAFETY SYSTEM</span>
+        </div>
+
+        <!-- Required Title -->
+        <h2 class="lost-title">Goldy Is a Little Lost!</h2>
+        <div class="title-underline light"></div>
+
+        <div class="lost-grid">
+          <!-- Portrait of Goldy -->
+          <div class="lost-portrait-col">
+            <div class="lost-frame">
+              <div class="lost-id-stamp">SAFE PET REGISTERED</div>
+              <img 
+                src="assets/goldy-joyful.png" 
+                alt="Goldy sitting patiently waiting for assistance" 
+                class="lost-goldy-image"
+                loading="lazy"
+              >
+              <div class="lost-meta-tag">
+                <span>Microchip: #GOLDY-GOOD-BOY-777 (Simulated)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emotional yet playful message -->
+          <div class="lost-info-col">
+            <div class="lost-message-box">
+              <p class="lost-main-message">
+                "Have you seen me? If you recognise me or know where I belong, please get in touch!"
+              </p>
+              <p class="lost-sub-desc">
+                If you find me wandering near a bakery, tennis court, or sitting outside a fried chicken shop looking adorable, my hoomans are probably frantic with an empty leash. Please help reunite us!
+              </p>
+            </div>
+
+            <div class="lost-quick-facts">
+              <div class="lost-fact">
+                <span class="fact-label">Answers to:</span>
+                <span class="fact-val">"Goldy", "Good Boy", or the sound of cheese</span>
+              </div>
+              <div class="lost-fact">
+                <span class="fact-label">Identifying Marks:</span>
+                <span class="fact-val">Golden lustrous coat, ultra-waggy tail, heart of pure gold</span>
+              </div>
+              <div class="lost-fact">
+                <span class="fact-label">Reward:</span>
+                <span class="fact-val">1,000,000 Free Kisses & Eternal Gratitude 🏅</span>
+              </div>
+            </div>
+
+            <!-- Required prominent button -->
+            <div class="lost-actions">
+              <button id="openContactModalBtn" class="btn btn-help-goldy">
+                <span class="btn-icon">📞</span>
+                <span>Help Goldy / Contact My Humans</span>
+              </button>
+              <span class="lost-emergency-note">🐾 Placeholder hotline for demonstration only</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 8. FINAL SECTION — Thanks for Visiting! (TV Wall Grid)    -->
+  <!-- ========================================================= -->
+  <section id="tv-screens" class="section tv-wall-section reveal-on-scroll">
+    <div class="container">
+      <div class="section-badge">
+        <span class="badge-icon">📺</span>
+        <span>GOLDY SURVEILLANCE HEADQUARTERS</span>
+      </div>
+
+      <!-- Required Prominent Headings -->
+      <h2 class="tv-wall-title">THANKS FOR CHECKING ME OUT!</h2>
+      <div class="title-underline"></div>
+      
+      <p class="tv-wall-subtitle">
+        "Now give me a treat. You know I deserve one."
+      </p>
+
+      <!-- Multi-Screen TV Grid (Arranged like retro surveillance monitors) -->
+      <div class="tv-wall-grid" id="tvWallGrid">
+        <!-- TV Screen 1 -->
+        <div class="tv-unit tv-unit-1">
+          <div class="tv-top-bar">
+            <span class="tv-channel-name">CAM 01: SNOOZE PATROL</span>
+            <span class="tv-live-pill">LIVE</span>
+          </div>
+          <div class="tv-screen-glass">
+            <video class="wall-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/normal.mp4" type="video/mp4">
+              <img src="assets/goldy-cool.png" alt="Goldy on TV 1">
+            </video>
+            <div class="tv-scanlines-overlay"></div>
+            <div class="tv-lens-flare"></div>
+          </div>
+          <div class="tv-bottom-knobs">
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="speaker-grill">||||</span>
+          </div>
+        </div>
+
+        <!-- TV Screen 2 -->
+        <div class="tv-unit tv-unit-2">
+          <div class="tv-top-bar">
+            <span class="tv-channel-name">CAM 02: RADAR TENNIS BALL</span>
+            <span class="tv-live-pill">LIVE</span>
+          </div>
+          <div class="tv-screen-glass">
+            <video class="wall-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/normal.mp4" type="video/mp4">
+              <img src="assets/goldy-cool.png" alt="Goldy on TV 2">
+            </video>
+            <div class="tv-scanlines-overlay"></div>
+            <div class="tv-lens-flare"></div>
+          </div>
+          <div class="tv-bottom-knobs">
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="speaker-grill">||||</span>
+          </div>
+        </div>
+
+        <!-- TV Screen 3 -->
+        <div class="tv-unit tv-unit-3">
+          <div class="tv-top-bar">
+            <span class="tv-channel-name">CAM 03: FRIDGE DOOR DEFENSE</span>
+            <span class="tv-live-pill">LIVE</span>
+          </div>
+          <div class="tv-screen-glass">
+            <video class="wall-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/normal.mp4" type="video/mp4">
+              <img src="assets/goldy-cool.png" alt="Goldy on TV 3">
+            </video>
+            <div class="tv-scanlines-overlay"></div>
+            <div class="tv-lens-flare"></div>
+          </div>
+          <div class="tv-bottom-knobs">
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="speaker-grill">||||</span>
+          </div>
+        </div>
+
+        <!-- TV Screen 4 -->
+        <div class="tv-unit tv-unit-4">
+          <div class="tv-top-bar">
+            <span class="tv-channel-name">CAM 04: BELLY RUB REPLAY</span>
+            <span class="tv-live-pill">LIVE</span>
+          </div>
+          <div class="tv-screen-glass">
+            <video class="wall-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/normal.mp4" type="video/mp4">
+              <img src="assets/goldy-cool.png" alt="Goldy on TV 4">
+            </video>
+            <div class="tv-scanlines-overlay"></div>
+            <div class="tv-lens-flare"></div>
+          </div>
+          <div class="tv-bottom-knobs">
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="speaker-grill">||||</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Interactive Celebration Action -->
+      <div class="final-treat-interactive">
+        <div class="treat-counter-display">
+          <span class="treat-plate-icon">🥣</span>
+          <span class="treat-tally-text">Treats Dispensed to Goldy Today: <strong id="treatCount">0</strong></span>
+        </div>
+
+        <button id="giveTreatBtn" class="btn btn-celebrate treat-celebrate-btn">
+          <span class="btn-icon">🍖</span>
+          <span>Feed Goldy a Treat!</span>
+          <span class="btn-icon">✨</span>
+        </button>
+
+        <!-- Final Cartoon Paw & Heart Animation Stage -->
+        <div id="treatAnimationStage" class="treat-anim-stage" aria-hidden="true"></div>
+
+        <p class="final-humor-note">
+          (Warning: Goldy will remember your generosity and request bacon next time!)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- CONTACT MODAL (Accessible / No Real Personal Details)    -->
+  <!-- ========================================================= -->
+  <div id="contactModal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button id="closeModalBtn" class="modal-close" aria-label="Close Contact Dialog">✖</button>
+      
+      <div class="modal-header">
+        <span class="modal-icon">🐾</span>
+        <h3 id="modalTitle" class="modal-title">Contact Goldy's Humans</h3>
+        <p class="modal-subtitle">Reunite our Golden Boy with his favorite hoomans!</p>
+      </div>
+
+      <div class="modal-body">
+        <div class="placeholder-alert">
+          <strong>ℹ️ Demo Notice:</strong> This is a portfolio website. All contact details below are playful placeholders.
+        </div>
+
+        <div class="contact-channels">
+          <div class="channel-item">
+            <span class="channel-icon">📞</span>
+            <div class="channel-info">
+              <span class="channel-name">Emergency Hooman Hotline:</span>
+              <span class="channel-val">+1 (555) 019-GOLD (Placeholder)</span>
+            </div>
+          </div>
+
+          <div class="channel-item">
+            <span class="channel-icon">💌</span>
+            <div class="channel-info">
+              <span class="channel-name">Hooman Family Email:</span>
+              <span class="channel-val">humans-of-goldy@fake-dog-rescue.org</span>
+            </div>
+          </div>
+
+          <div class="channel-item">
+            <span class="channel-icon">🏷️</span>
+            <div class="channel-info">
+              <span class="channel-name">Registered Microchip ID:</span>
+              <span class="channel-val">#GOLDY-GOOD-BOY-777</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Send Message Form -->
+        <form id="lostContactForm" class="contact-sim-form" onsubmit="return false;">
+          <h4 class="form-title">Send a Quick Sighting Alert:</h4>
+          <div class="form-group">
+            <label for="finderName">Your Name / Good Samaritan:</label>
+            <input type="text" id="finderName" placeholder="e.g. Friendly Neighbor Dave" required>
+          </div>
+          <div class="form-group">
+            <label for="finderLocation">Where did you spot Goldy?</label>
+            <input type="text" id="finderLocation" placeholder="e.g. Barking at butterflies near the park bench" required>
+          </div>
+          <div class="form-group">
+            <label for="finderMessage">Message for Goldy's Humans:</label>
+            <textarea id="finderMessage" rows="3" placeholder="Don't worry, I gave him a scratch behind the ears and he is safe!"></textarea>
+          </div>
+          <button type="submit" id="submitContactBtn" class="btn btn-primary btn-block">
+            <span>Send Alert to Hoomans 🐾</span>
+          </button>
+          <div id="contactSuccessMsg" class="contact-success-msg" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER                                                    -->
+  <!-- ========================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <span>🐾</span>
+          <span>GOLDY RETRIEVER</span>
+        </div>
+        <p class="footer-text">
+          Crafted with love, treats, and plenty of tail wags. Built with semantic HTML5, modern CSS3, and vanilla JavaScript.
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <p class="treat-motto">"In a world where you can be anything, be a Good Boy." 🐶✨</p>
+      </div>
+
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" id="backToTop" aria-label="Back to top">
+          <span class="top-arrow">⬆️</span>
+          <span>Back to Snooze Zone</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

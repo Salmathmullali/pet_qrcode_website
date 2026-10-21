@@ -1,0 +1,2757 @@
+/* ==========================================================================
+   GOLDY'S FUNNY DIGITAL PET PORTFOLIO — MAIN STYLESHEET
+   Clean white background, pastel green accents, navy typography, yellow pops,
+   and cartoon-inspired playful design.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & CSS VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette */
+  --bg-white: #ffffff;
+  --bg-cream: #fafdfb;
+  --bg-surface: #f4faf6;
+  --bg-card: #ffffff;
+  
+  /* Primary Accent: Pastel Green */
+  --pastel-green-light: #e8f8f0;
+  --pastel-green: #a8e6cf;
+  --pastel-green-main: #72c898;
+  --pastel-green-dark: #3ea568;
+  --pastel-green-shadow: rgba(114, 200, 152, 0.3);
+
+  /* Dark Navy Blue Typography & Borders */
+  --navy-dark: #0f1d38;
+  --navy-main: #192d52;
+  --navy-muted: #4a5d7c;
+  --navy-border: #0f1d38;
+
+  /* Playful Accents */
+  --accent-yellow: #ffd166;
+  --accent-yellow-light: #fff3cc;
+  --accent-yellow-dark: #f0a500;
+  --accent-coral: #ff6b8b;
+  --accent-coral-light: #ffebee;
+  --accent-blue-soft: #d8ecf8;
+
+  /* Typography */
+  --font-display: 'Fredoka', cursive, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Cartoon UI Styles */
+  --border-thick: 3px solid var(--navy-dark);
+  --border-medium: 2px solid var(--navy-dark);
+  --border-light: 1.5px solid rgba(15, 29, 56, 0.15);
+  
+  --shadow-cartoon-sm: 3px 3px 0px var(--navy-dark);
+  --shadow-cartoon-md: 5px 5px 0px var(--navy-dark);
+  --shadow-cartoon-lg: 8px 8px 0px var(--navy-dark);
+  --shadow-cartoon-hover: 7px 7px 0px var(--navy-dark);
+  --shadow-soft: 0 10px 30px rgba(15, 29, 56, 0.06);
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-white);
+  color: var(--navy-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-white);
+  color: var(--navy-main);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--navy-dark);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1.05rem;
+  color: var(--navy-muted);
+}
+
+/* Section Common Layout */
+.section {
+  padding: 100px 0;
+  position: relative;
+  background-color: var(--bg-white);
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pastel-green-light);
+  color: var(--pastel-green-dark);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--pastel-green-main);
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 0px var(--pastel-green-main);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: var(--navy-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--navy-muted);
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.title-underline {
+  width: 80px;
+  height: 6px;
+  background: var(--pastel-green-main);
+  border-radius: var(--radius-pill);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.title-underline::after {
+  content: "🐾";
+  position: absolute;
+  right: -24px;
+  top: -12px;
+  font-size: 16px;
+}
+
+/* Common Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  border: var(--border-thick);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-primary {
+  background: var(--pastel-green-main);
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-cartoon-md);
+}
+
+.btn-primary:hover {
+  background: var(--pastel-green);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.btn-secondary {
+  background: var(--accent-yellow);
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-cartoon-md);
+}
+
+.btn-secondary:hover {
+  background: #ffe066;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.btn-outline {
+  background: var(--bg-white);
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-cartoon-md);
+}
+
+.btn-outline:hover {
+  background: var(--pastel-green-light);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.btn-outline:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+/* --------------------------------------------------------------------------
+   3. FLOATING CONTROLS & HEADER
+   -------------------------------------------------------------------------- */
+.floating-controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-white);
+  border: var(--border-medium);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-cartoon-sm);
+  transition: all var(--transition-fast);
+}
+
+.control-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-cartoon-md);
+  background: var(--pastel-green-light);
+}
+
+.control-btn.treat-btn {
+  background: var(--accent-yellow-light);
+  border-color: var(--navy-dark);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(15, 29, 56, 0.08);
+  z-index: 900;
+  transition: all var(--transition-smooth);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--navy-dark);
+  letter-spacing: -0.5px;
+}
+
+.brand-paw {
+  font-size: 1.5rem;
+  display: inline-block;
+  animation: wagSmall 2.4s ease-in-out infinite;
+}
+
+.brand-dot {
+  color: var(--pastel-green-main);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--navy-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--navy-dark);
+  background: var(--pastel-green-light);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 34px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--navy-dark);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. SECTION 2: HERO SECTION — MEET GOLDY
+   Animation sequence:
+   1. "Hi, I'm" appears from left towards center.
+   2. Goldy rises smoothly from bottom.
+   3. "GOLDY" displays prominently.
+   4. Caption appears.
+   Heartbeat animation on portrait. Floating doodles.
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: calc(100vh - 74px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-white);
+  padding: 40px 0 70px;
+}
+
+/* Background floating cartoon doodles */
+.hero-doodles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.doodle {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.75;
+  animation: floatDrift 4s ease-in-out infinite alternate;
+  user-select: none;
+}
+
+.doodle-1 { top: 12%; left: 8%; font-size: 28px; animation-duration: 4.8s; }
+.doodle-2 { top: 22%; right: 10%; font-size: 32px; animation-duration: 5.2s; animation-delay: 0.5s; }
+.doodle-3 { top: 68%; left: 6%; font-size: 24px; animation-duration: 4.2s; animation-delay: 1.2s; }
+.doodle-4 { bottom: 18%; right: 12%; font-size: 30px; animation-duration: 6s; animation-delay: 0.8s; }
+.doodle-5 { top: 40%; left: 45%; font-size: 20px; animation-duration: 3.6s; animation-delay: 1.5s; }
+.doodle-6 { top: 8%; right: 38%; font-size: 22px; animation-duration: 4.5s; }
+.doodle-7 { bottom: 26%; left: 42%; font-size: 26px; animation-duration: 5.5s; }
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Hero Column */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Step 1: "Hi, I'm" horizontal clipping mask reveal in current position */
+.hero-greeting-box {
+  margin-bottom: 4px;
+}
+
+.hero-intro-text {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 600;
+  color: var(--navy-muted);
+  /* Slices into view from left to right in place */
+  clip-path: inset(0 100% 0 0);
+  -webkit-clip-path: inset(0 100% 0 0);
+  animation: heroClipReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s;
+}
+
+/* Step 3: Prominent "GOLDY" horizontal clipping mask reveal */
+.hero-dog-name {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9.5vw, 7.8rem);
+  font-weight: 800;
+  color: var(--navy-dark);
+  line-height: 0.95;
+  letter-spacing: -2px;
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 0px var(--accent-yellow);
+  /* Slices into view from left to right in place */
+  clip-path: inset(0 100% 0 0);
+  -webkit-clip-path: inset(0 100% 0 0);
+  animation: heroClipReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
+}
+
+/* Step 4: Playful Caption */
+.hero-caption {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  color: var(--navy-dark);
+  line-height: 1.4;
+  margin-bottom: 30px;
+  max-width: 520px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroCaptionFade 0.7s ease forwards 1.8s;
+  background: var(--pastel-green-light);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border-left: 5px solid var(--pastel-green-main);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroCaptionFade 0.7s ease forwards 2.1s;
+}
+
+.hero-stats-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroCaptionFade 0.7s ease forwards 2.3s;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(15, 29, 56, 0.12);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-main);
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pastel-green-main);
+}
+
+/* Right Hero Column: Goldy's Portrait with Heartbeat */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-portrait-stage {
+  position: relative;
+  width: 100%;
+  max-width: 530px; /* Slightly bigger & more prominent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Step 2: Goldy rises smoothly from bottom of screen */
+.hero-image-wrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 490px; /* Increased from 420px for prominent dog showcase */
+  opacity: 0;
+  transform: translateY(120px);
+  animation: heroDogRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
+}
+
+/* Clean white background & Heartbeat animation */
+.hero-dog-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Preserves exact aspect ratio; no distortion or cropping */
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  background-color: #ffffff;
+  mix-blend-mode: multiply; /* Seamless blending with pure white background */
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Subtle, gentle heartbeat animation that scales up & down without distortion */
+.heartbeat-anim {
+  animation: dogHeartbeat 2.8s ease-in-out infinite;
+}
+
+/* Cartoon Halo backdrop */
+.cartoon-halo {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pastel-green-light) 0%, rgba(232, 248, 240, 0) 72%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Comic Speech Bubble */
+.comic-bubble {
+  position: absolute;
+  background: var(--bg-white);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-cartoon-sm);
+  padding: 10px 18px;
+  border-radius: 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy-dark);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.comic-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-white);
+  border-right: var(--border-medium);
+  border-bottom: var(--border-medium);
+  transform: rotate(45deg);
+}
+
+.hero-bubble {
+  top: -15px;
+  right: 15px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  animation: bubblePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 2.4s;
+}
+
+/* Small cartoon floaters around Goldy */
+.portrait-decorations .decor {
+  position: absolute;
+  font-size: 24px;
+  z-index: 4;
+  user-select: none;
+  animation: decorFloat 3.2s ease-in-out infinite alternate;
+}
+
+.decor-top-left { top: 15px; left: 10px; animation-delay: 0.2s; }
+.decor-top-right { top: 35px; right: -10px; animation-delay: 0.7s; }
+.decor-bottom-left { bottom: 40px; left: -15px; animation-delay: 1.1s; }
+.decor-bottom-right { bottom: 25px; right: 10px; animation-delay: 1.6s; }
+
+/* Scroll Down Hint */
+.scroll-down-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  color: var(--navy-muted);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+  z-index: 2;
+}
+
+.scroll-down-hint:hover {
+  color: var(--navy-dark);
+  transform: translateY(3px);
+}
+
+.mouse-icon {
+  width: 30px;
+  height: 44px;
+  border: var(--border-medium);
+  border-radius: var(--radius-pill);
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  background: var(--bg-white);
+}
+
+.mouse-wheel {
+  font-size: 14px;
+  animation: mouseWheelPaw 1.6s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION 3: WHO I AM
+   -------------------------------------------------------------------------- */
+.who-section {
+  background-color: var(--bg-white);
+}
+
+/* Funny Goldy Voice Introduction Card */
+.intro-quote-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 38px 48px;
+  box-shadow: var(--shadow-cartoon-md);
+  margin-bottom: 48px;
+  max-width: 900px;
+}
+
+.intro-quote-card .quote-mark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--pastel-green-main);
+  opacity: 0.55;
+  user-select: none;
+}
+
+.intro-quote-card .quote-mark.left {
+  top: 10px;
+  left: 18px;
+}
+
+.intro-quote-card .quote-mark.right {
+  bottom: -20px;
+  right: 28px;
+}
+
+.quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  color: var(--navy-dark);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.quote-text strong {
+  color: var(--pastel-green-dark);
+  position: relative;
+  display: inline-block;
+}
+
+.quote-text strong::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--accent-yellow);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.quote-author-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-muted);
+  background: var(--bg-white);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(15, 29, 56, 0.1);
+}
+
+/* 4 Personality Tags Grid */
+.personality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.personality-card {
+  background: var(--bg-white);
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-cartoon-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.personality-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-cartoon-hover);
+  border-color: var(--navy-dark);
+  background: #fafefc;
+}
+
+.card-icon-bubble {
+  width: 60px;
+  height: 60px;
+  background: var(--pastel-green-light);
+  border: var(--border-medium);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 0px var(--navy-dark);
+  transition: transform var(--transition-fast);
+}
+
+.personality-card:hover .card-icon-bubble {
+  transform: scale(1.1) rotate(6deg);
+  background: var(--accent-yellow-light);
+}
+
+.card-emoji {
+  font-size: 28px;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+  color: var(--navy-dark);
+}
+
+.card-desc {
+  font-size: 0.98rem;
+  color: var(--navy-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.card-stat {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(15, 29, 56, 0.15);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--navy-muted);
+  margin-bottom: 6px;
+}
+
+.stat-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #eaf2ed;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  border: 1px solid rgba(15, 29, 56, 0.15);
+  margin-bottom: 6px;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pastel-green-main), var(--pastel-green-dark));
+  border-radius: var(--radius-pill);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pastel-green-dark);
+}
+
+/* Fun Facts Strip */
+.who-fun-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  background: var(--pastel-green-light);
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+
+.fact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fact-icon {
+  font-size: 24px;
+}
+
+.fact-text {
+  font-size: 0.95rem;
+  color: var(--navy-dark);
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION 4: MY HOME ("Where Do I Live?")
+   -------------------------------------------------------------------------- */
+.home-section {
+  background: var(--bg-white);
+}
+
+/* Two distinct balanced stages: House on one side, Goldy on the other */
+.home-duo-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+/* House Card - independent cartoon presentation with soft pastel-green backdrop */
+.home-house-card {
+  position: relative;
+  background: var(--pastel-green-light);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px 24px;
+  box-shadow: var(--shadow-cartoon-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform var(--transition-fast);
+}
+
+.home-house-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.house-card-backdrop {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sky-cloud {
+  position: absolute;
+  font-size: 32px;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.cloud-1 {
+  top: -15px;
+  left: 15px;
+  animation: cloudDrift 14s infinite linear alternate;
+}
+
+.cloud-2 {
+  top: 10px;
+  right: 20px;
+  animation: cloudDrift 18s infinite linear alternate-reverse;
+}
+
+.svg-cartoon-house {
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+  filter: drop-shadow(4px 4px 0px rgba(15, 29, 56, 0.15));
+  position: relative;
+  z-index: 2;
+}
+
+.smoke-puff {
+  animation: smokeWobble 2.5s ease-in-out infinite alternate;
+}
+
+.house-caption-badge {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  background: var(--bg-white);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--navy-dark);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+  z-index: 3;
+}
+
+/* Goldy Card - independent stage with white background */
+.home-dog-card {
+  position: relative;
+  background: var(--bg-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px 24px;
+  box-shadow: var(--shadow-cartoon-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform var(--transition-fast);
+}
+
+.home-dog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.home-dog-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-goldy-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1145 / 1374;
+  object-fit: contain;
+  background-color: #ffffff;
+  mix-blend-mode: multiply;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.home-goldy-img:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.home-bubble {
+  top: -45px;
+  right: -10px;
+  max-width: 220px;
+  font-size: 0.85rem;
+  background: #ffffff;
+  z-index: 6;
+}
+
+.dog-caption-badge {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  background: var(--accent-yellow-light);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--navy-dark);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+  z-index: 3;
+}
+
+.home-info-wrap {
+  width: 100%;
+}
+
+/* Right: Address Card */
+.address-card {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-cartoon-md);
+  position: relative;
+}
+
+.address-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed rgba(15, 29, 56, 0.18);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-chip {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--navy-muted);
+  letter-spacing: 0.5px;
+}
+
+.card-stamp {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #d32f2f;
+  border: 2px solid #d32f2f;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transform: rotate(-3deg);
+  letter-spacing: 0.5px;
+}
+
+.address-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.address-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--navy-muted);
+}
+
+.field-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.field-value.highlight {
+  color: var(--pastel-green-dark);
+  font-size: 1.35rem;
+}
+
+/* Mandatory Prompt Caption */
+.home-caption-box {
+  background: var(--accent-yellow-light);
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 3px 3px 0px var(--navy-dark);
+}
+
+.home-golden-rule {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.home-amenities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy-main);
+  background: var(--bg-white);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(15, 29, 56, 0.1);
+}
+
+.address-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.doorbell-feedback {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--pastel-green-dark);
+  animation: bubblePop 0.4s ease forwards;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION 5: WHAT I LOVE THE MOST!
+   - Large cartoon bone illustration in background
+   - Falling-bone animation at different speeds & sizes
+   - Center video of Goldy looking left & right
+   - Specific funny captions
+   -------------------------------------------------------------------------- */
+.loves-section {
+  background: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Huge Background Cartoon Bone */
+.huge-background-bone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  width: 900px;
+  max-width: 95vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.huge-background-bone svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Clipped layer for giant falling cartoon bones */
+.bone-rain-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* Strictly behind the container content (z-index: 2) */
+  overflow: hidden;
+}
+
+.loves-section .container {
+  position: relative;
+  z-index: 2; /* Ensures central video and text remain above falling bones */
+}
+
+.falling-bone {
+  position: absolute;
+  top: -200px;
+  user-select: none;
+  pointer-events: none;
+  animation-name: giantBoneFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  will-change: transform;
+  filter: drop-shadow(4px 4px 0px rgba(15, 29, 56, 0.12));
+}
+
+@keyframes giantBoneFall {
+  0% {
+    transform: translateY(0) rotate(var(--bone-start-rot, 0deg));
+    opacity: var(--bone-target-opacity, 0.85);
+  }
+  80% {
+    opacity: var(--bone-target-opacity, 0.85);
+  }
+  100% {
+    transform: translateY(var(--fall-dist, 1400px)) rotate(var(--bone-end-rot, 360deg));
+    opacity: 0.25;
+  }
+}
+
+/* Video Center Stage — TV styling removed entirely */
+.love-center-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 54px;
+}
+
+.love-video-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-cartoon-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.love-video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.love-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1144 / 1374;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid rgba(15, 29, 56, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-dog-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+  display: block;
+}
+
+.love-video-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.video-sound-toggle-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--bg-white);
+  border: 2px solid var(--navy-dark);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 5;
+}
+
+.video-sound-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--pastel-green-main);
+}
+
+.love-video-caption {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.caption-paw {
+  font-size: 1.1rem;
+}
+
+/* Bone Rain Controls */
+.bone-rain-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.shower-btn {
+  font-size: 1.15rem;
+  padding: 14px 32px;
+}
+
+.shower-hint {
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+  font-weight: 600;
+}
+
+/* Trio Quotes Grid */
+.quotes-trio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.love-caption-card {
+  background: var(--bg-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  box-shadow: var(--shadow-cartoon-md);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.love-caption-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.love-caption-card.card-yellow { border-color: var(--navy-dark); }
+.love-caption-card.card-green { border-color: var(--navy-dark); }
+.love-caption-card.card-blue { border-color: var(--navy-dark); }
+
+.caption-icon-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.emoji-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.card-yellow .emoji-circle { background: var(--accent-yellow-light); }
+.card-green .emoji-circle { background: var(--pastel-green-light); }
+.card-blue .emoji-circle { background: var(--accent-blue-soft); }
+
+.sparkle-tag {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--navy-muted);
+  background: #f0f4f8;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.caption-title {
+  font-size: 1.45rem;
+  color: var(--navy-dark);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.caption-desc {
+  font-size: 0.98rem;
+  color: var(--navy-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.caption-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(15, 29, 56, 0.15);
+}
+
+.sound-wave {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pastel-green-dark);
+}
+
+/* --------------------------------------------------------------------------
+   8. SECTION 6: MY PERSONAL SPACE ("DO NOT TOUCH MY MOUTH!")
+   Humorous comic-style warning, grumpy goldy image, caution tape.
+   -------------------------------------------------------------------------- */
+.boundaries-section {
+  background: var(--bg-white);
+  padding-top: 60px;
+}
+
+/* Caution Tape Banner */
+.caution-tape-banner {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffd166,
+    #ffd166 20px,
+    #0f1d38 20px,
+    #0f1d38 40px
+  );
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  margin-bottom: 50px;
+  box-shadow: var(--shadow-cartoon-sm);
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+.tape-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #0f1d38;
+  background: #ffffff;
+  padding: 6px 18px;
+  border-radius: 6px;
+  display: inline-block;
+  border: var(--border-medium);
+}
+
+.boundaries-content-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Grumpy Goldy Stage */
+.grumpy-stage {
+  display: flex;
+  justify-content: center;
+}
+
+.grumpy-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-cartoon-lg);
+  transform: rotate(1.5deg);
+  transition: transform var(--transition-smooth);
+}
+
+.grumpy-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.grumpy-danger-badge {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background: #ff5252;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: var(--border-medium);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+  z-index: 4;
+}
+
+.grumpy-dog-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  mix-blend-mode: multiply;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.comic-steam-puff {
+  position: absolute;
+  top: -24px;
+  right: -15px;
+  background: #ffffff;
+  border: var(--border-thick);
+  border-radius: 20px;
+  padding: 8px 16px;
+  box-shadow: var(--shadow-cartoon-sm);
+  z-index: 5;
+  animation: wobbleSteam 2s infinite ease-in-out;
+}
+
+.grrr-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #d32f2f;
+}
+
+/* Boundaries Text Wrap */
+.boundaries-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.comic-warning-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.warning-sign-icon {
+  font-size: 24px;
+}
+
+.warning-tag {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #d32f2f;
+  letter-spacing: 1px;
+}
+
+/* Prompt Required: "DO NOT TOUCH MY MOUTH!" */
+.boundary-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: #d32f2f;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-shadow: 3px 3px 0px var(--navy-dark);
+  letter-spacing: -0.5px;
+}
+
+/* Prompt Required Subtext */
+.boundary-subtext {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--navy-dark);
+  line-height: 1.45;
+  margin-bottom: 28px;
+  background: var(--pastel-green-light);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  border-left: 5px solid var(--pastel-green-main);
+}
+
+.boundary-rules-box {
+  background: var(--bg-surface);
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-cartoon-sm);
+}
+
+.rules-heading {
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  color: var(--navy-dark);
+}
+
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.98rem;
+  color: var(--navy-main);
+}
+
+.rule-item strong {
+  color: var(--navy-dark);
+}
+
+.rule-item.prohibited {
+  background: var(--accent-coral-light);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed #ff5252;
+}
+
+.boundaries-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-warning {
+  background: #ff5252;
+  color: #ffffff;
+  box-shadow: var(--shadow-cartoon-md);
+}
+
+.btn-warning:hover {
+  background: #ff1744;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.btn-warning:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.boop-warning-msg {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #d32f2f;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* Shake Animation when snoot booped */
+.shake-element {
+  animation: comicShake 0.5s ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECTION 7: LOST OR LOOKING FOR HELP?
+   -------------------------------------------------------------------------- */
+.lost-section {
+  background: var(--bg-white);
+}
+
+.lost-card-wrapper {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  box-shadow: var(--shadow-cartoon-lg);
+  position: relative;
+}
+
+.lost-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffebee;
+  color: #d32f2f;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid #ff8a80;
+  margin-bottom: 16px;
+}
+
+.lost-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--navy-dark);
+  margin-bottom: 12px;
+}
+
+.title-underline.light {
+  background: #ff8a80;
+}
+
+.lost-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.lost-portrait-col {
+  display: flex;
+  justify-content: center;
+}
+
+.lost-frame {
+  position: relative;
+  background: #ffffff;
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-cartoon-md);
+  text-align: center;
+}
+
+.lost-id-stamp {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--pastel-green-dark);
+  background: var(--pastel-green-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.lost-goldy-image {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+  transition: transform var(--transition-smooth);
+}
+
+.lost-goldy-image:hover {
+  transform: scale(1.03);
+}
+
+.lost-meta-tag {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy-muted);
+}
+
+.lost-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lost-message-box {
+  background: #ffffff;
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-cartoon-sm);
+}
+
+/* Prompt Required Message */
+.lost-main-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--navy-dark);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.lost-sub-desc {
+  font-size: 1rem;
+  color: var(--navy-muted);
+  line-height: 1.6;
+}
+
+.lost-quick-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.lost-fact {
+  display: flex;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.fact-label {
+  font-weight: 800;
+  color: var(--navy-dark);
+  min-width: 140px;
+}
+
+.fact-val {
+  color: var(--navy-muted);
+}
+
+.lost-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Prompt Required Button: "Help Goldy" or "Contact My Humans" */
+.btn-help-goldy {
+  background: var(--pastel-green-main);
+  color: var(--navy-dark);
+  font-size: 1.15rem;
+  padding: 16px 36px;
+  border-radius: var(--radius-pill);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-cartoon-md);
+  font-family: var(--font-display);
+  font-weight: 800;
+  transition: all var(--transition-fast);
+}
+
+.btn-help-goldy:hover {
+  background: var(--pastel-green);
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.btn-help-goldy:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.lost-emergency-note {
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECTION 8: FINAL SECTION — THANKS FOR VISITING!
+   TV Screen Grid with Goldy video repeated across multiple retro screens.
+   -------------------------------------------------------------------------- */
+.tv-wall-section {
+  background: var(--bg-white);
+  text-align: center;
+}
+
+.tv-wall-title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  color: var(--navy-dark);
+  letter-spacing: -1px;
+}
+
+.tv-wall-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: var(--pastel-green-dark);
+  margin-bottom: 48px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Multi-Screen TV Grid */
+.tv-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 54px;
+}
+
+.tv-unit {
+  background: #232f42;
+  border: var(--border-thick);
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: var(--shadow-cartoon-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast);
+}
+
+.tv-unit:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-cartoon-hover);
+}
+
+.tv-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #a8e6cf;
+}
+
+.tv-live-pill {
+  background: #ff5252;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  animation: blinkRec 1.2s infinite;
+}
+
+.tv-screen-glass {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1144 / 1374; /* Matches native portrait video ratio so full dog is displayed */
+  background: #ffffff; /* Seamless blend with video white background */
+  border-radius: 12px;
+  overflow: hidden; /* Ensures video never overflows TV frame */
+  border: 2px solid #3c4f6d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wall-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Full dog visible: head, body, legs, tail preserved */
+  object-position: center;
+  background: #ffffff;
+  display: block;
+}
+
+.tv-screen-glass img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.tv-scanlines-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+.tv-lens-flare {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  pointer-events: none;
+}
+
+.tv-bottom-knobs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 0 4px;
+}
+
+.knob {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-yellow);
+  border: 2px solid var(--navy-dark);
+  border-radius: 50%;
+}
+
+.speaker-grill {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #7184a3;
+  font-weight: 800;
+}
+
+/* Final Treat Interactive */
+.final-treat-interactive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.treat-counter-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--pastel-green-light);
+  border: var(--border-medium);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.treat-plate-icon {
+  font-size: 22px;
+}
+
+.treat-tally-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.treat-celebrate-btn {
+  font-size: 1.35rem;
+  padding: 18px 44px;
+  background: var(--accent-yellow);
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-cartoon-lg);
+  border-radius: var(--radius-pill);
+  border: var(--border-thick);
+}
+
+.treat-celebrate-btn:hover {
+  background: #ffe066;
+  transform: translate(-3px, -3px) scale(1.03);
+  box-shadow: 9px 9px 0px var(--navy-dark);
+}
+
+.treat-celebrate-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--navy-dark);
+}
+
+.treat-anim-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.burst-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  user-select: none;
+  pointer-events: none;
+  font-size: 28px;
+  animation: particleFly 1.2s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+.final-humor-note {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--navy-muted);
+}
+
+/* --------------------------------------------------------------------------
+   11. CONTACT MODAL STYLES
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 29, 56, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.28s ease;
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-cartoon-lg);
+  transform: translateY(24px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-backdrop.is-open .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-surface);
+  border: var(--border-medium);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: #ff5252;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.modal-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-size: 1.85rem;
+  color: var(--navy-dark);
+  margin-bottom: 6px;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  color: var(--navy-muted);
+}
+
+.placeholder-alert {
+  background: var(--pastel-green-light);
+  border: 1.5px solid var(--pastel-green-main);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--navy-dark);
+  margin-bottom: 20px;
+}
+
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(15, 29, 56, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.channel-icon {
+  font-size: 22px;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy-muted);
+}
+
+.channel-val {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.contact-sim-form {
+  border-top: 2px dashed rgba(15, 29, 56, 0.15);
+  padding-top: 20px;
+}
+
+.form-title {
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: var(--navy-dark);
+}
+
+.form-group {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-main);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: var(--border-medium);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--navy-dark);
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--pastel-green-main);
+  box-shadow: 0 0 0 3px rgba(114, 200, 152, 0.25);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.contact-success-msg {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--pastel-green-dark);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER & BACK TO TOP
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--bg-surface);
+  border-top: var(--border-thick);
+  padding: 40px 0;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-left {
+  max-width: 360px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: var(--navy-muted);
+}
+
+.treat-motto {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  background: var(--bg-white);
+  padding: 10px 18px;
+  border: var(--border-medium);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-cartoon-sm);
+  transition: all var(--transition-fast);
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-cartoon-md);
+  background: var(--pastel-green-light);
+}
+
+/* --------------------------------------------------------------------------
+   13. SCROLL REVEAL (IntersectionObserver)
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   14. KEYFRAME ANIMATIONS
+   -------------------------------------------------------------------------- */
+/* Heartbeat animation for Goldy's sunglasses portrait */
+@keyframes dogHeartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.035);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.035);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hero horizontal clipping mask reveal (slices into view from left to right in place) */
+@keyframes heroClipReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    -webkit-clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes heroDogRise {
+  0% {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroNamePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  70% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroCaptionFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating & Drifting */
+@keyframes floatDrift {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-16px) rotate(8deg);
+  }
+}
+
+@keyframes decorFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-10px) scale(1.15);
+  }
+}
+
+@keyframes bubblePop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mouseWheelPaw {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes wagSmall {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(30px); }
+}
+
+@keyframes smokeWobble {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-8px) scale(1.15); opacity: 0.4; }
+}
+
+@keyframes blinkRec {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes marqueeTicker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes wobbleSteam {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.08); }
+}
+
+@keyframes comicShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-12px) rotate(-3deg); }
+  40% { transform: translateX(12px) rotate(3deg); }
+  60% { transform: translateX(-8px) rotate(-2deg); }
+  80% { transform: translateX(8px) rotate(2deg); }
+}
+
+@keyframes particleFly {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.2) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. RESPONSIVE DESIGN (Tablets & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .hero-dog-name {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats-pills {
+    justify-content: center;
+  }
+
+  .home-duo-stage {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .boundaries-content-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .lost-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .lost-quick-facts {
+    text-align: left;
+  }
+
+  .lost-actions {
+    justify-content: center;
+  }
+
+  .tv-wall-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 74px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: var(--border-thick);
+    flex-direction: column;
+    padding: 24px;
+    gap: 14px;
+    box-shadow: var(--shadow-cartoon-lg);
+    transform: translateY(-120%);
+    transition: transform 0.35s ease;
+    z-index: 890;
+  }
+
+  .nav-links.is-active {
+    transform: translateY(0);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .floating-controls {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .control-btn .label {
+    display: none; /* Icon-only on small mobile screens */
+  }
+
+  .control-btn {
+    padding: 10px;
+  }
+
+  .intro-quote-card {
+    padding: 28px 24px;
+  }
+
+  .lost-card-wrapper {
+    padding: 28px 20px;
+  }
+
+  .home-amenities {
+    grid-template-columns: 1fr;
+  }
+
+  .home-dog-wrapper {
+    max-width: 280px;
+  }
+
+  .home-bubble {
+    display: none; /* Keep clean on small mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .tv-wall-grid {
+    grid-template-columns: 1fr; /* Single column on tiny screens */
+  }
+
+  .hero-dog-name {
+    font-size: 3.8rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .modal-card {
+    padding: 24px 18px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. REDUCED MOTION PREFERENCE (Accessibility)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-intro-text,
+  .hero-dog-name {
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .heartbeat-anim,
+  .doodle,
+  .falling-bone,
+  .decor,
+  .smoke-puff,
+  .cloud-1,
+  .cloud-2,
+  .ticker-text {
+    display: none !important;
+    animation: none !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
